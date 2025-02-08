@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Aletazo ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><text font-size="24" fill="red">❤️</text></svg>'), auto;
+            position: relative;
+        }
+
+        .heart-bg {
+            position: fixed;
+            font-size: 150px;
+            color: rgba(255, 255, 255, 0.15);
+            z-index: -1;
+            pointer-events: none;
+            animation: floatHeart var(--duration) ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes floatHeart {
+            0%, 100% {
+                transform: translateY(0) scale(1) rotate(var(--rotation));
+            }
+            50% {
+                transform: translateY(-20px) scale(1.1) rotate(calc(var(--rotation) + 5deg));
+            }
+        }
+
+        .contenedor-pregunta {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #c44569;
+            font-size: 2.3em;
+            margin-bottom: 40px;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:focus {
+            outline: 3px solid #fff;
+            outline-offset: 2px;
+        }
+
+        #si {
+            background: #4CAF50;
+            color: white;
+            transform: scale(1);
+        }
+
+        #si:hover {
+            background: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        #no {
+            background: #f44336;
+            color: white;
+            position: relative;
+            transition: all 0.4s;
+        }
+
+        #no:hover {
+            background: #da190b;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .contenedor-mensaje {
+            display: none;
+            text-align: center;
+            max-width: 600px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            z-index: 1;
+            position: relative;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .corazon {
+            font-size: 3em;
+            animation: latido 1s infinite;
+        }
+
+        @keyframes latido {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        #descargar {
+            background: #E91E63;
+            color: white;
+            margin-top: 25px;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        #descargar:hover {
+            background: #D81B60;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        #descargar:focus {
+            outline: 3px solid #fff;
+            outline-offset: 2px;
+        }
+
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        @media (max-width: 480px) {
+            h1 { 
+                font-size: 1.8em; 
+            }
+            button { 
+                padding: 12px 24px; 
+            }
+            .contenedor-pregunta,
+            .contenedor-mensaje {
+                margin: 10px;
+                padding: 20px;
+            }
+        }
+
+        @media (pointer: coarse) {
+            body {
+                cursor: default;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="hearts-container"></div>
+
+    <div class="contenedor-pregunta" id="pregunta">
+        <h1>❤️ Aletazo ❤️<br>¿Quieres pasar el San Valentín conmigo?</h1>
+        <div class="botones">
+            <button id="si">¡Sí!</button>
+            <button id="no">No</button>
+        </div>
+    </div>
+
+    <div class="contenedor-mensaje" id="mensaje">
+        <div class="corazon">❤️</div>
+        <h2>¡Feliz primer San Valentín mi amor :D!</h2>
+        <p>Aletazo, este es solo el primero de muchos San Valentines que celebraremos juntos.<br>
+        Pronto cumpliremos un año de llenarnos de amor y alegría mutuamente,<br>
+        y estoy más emocionado que nunca por todo lo que nos espera.<br>
+        Contigo quiero construir mil momentos más.<br><br>
+        Te amo con todo mi corazón ❤️</p>
+        <a id="descargar" href="14 de febrero Querida Aletazo,.pdf" download>
+            Descargar Cartita
+        </a>
+    </div>
+
+    <script>
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const fragment = document.createDocumentFragment();
+            const numHearts = Math.min(8, Math.floor(window.innerWidth / 160));
+
+            for (let i = 0; i < numHearts; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-bg';
+                heart.innerHTML = '❤';
+                
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const duration = 3 + Math.random() * 4;
+                const delay = Math.random() * 3;
+                const rotation = Math.random() * 30 - 15;
+                
+                heart.style.cssText = `
+                    left: ${left}%;
+                    top: ${top}%;
+                    --duration: ${duration}s;
+                    --delay: -${delay}s;
+                    --rotation: ${rotation}deg;
+                `;
+                
+                fragment.appendChild(heart);
+            }
+            
+            container.appendChild(fragment);
+        }
+
+        window.addEventListener('load', createHearts);
+
+        const btnNo = document.getElementById('no');
+        const btnSi = document.getElementById('si');
+        const pregunta = document.getElementById('pregunta');
+        const mensaje = document.getElementById('mensaje');
+
+        function moverBotonNo(event) {
+            const maxWidth = window.innerWidth - btnNo.offsetWidth - 20;
+            const maxHeight = window.innerHeight - btnNo.offsetHeight - 20;
+            
+            if (isMobile) {
+                btnNo.style.transition = 'all 0.2s ease-out';
+                // Obtener la posición del toque
+                const touchX = event ? (event.type === 'touchstart' ? event.touches[0].clientX : event.clientX) : window.innerWidth / 2;
+                const touchY = event ? (event.type === 'touchstart' ? event.touches[0].clientY : event.clientY) : window.innerHeight / 2;
+                
+                let newX, newY;
+                
+                // Mover al lado opuesto del toque
+                if (touchX < window.innerWidth / 2) {
+                    newX = maxWidth - 20;
+                } else {
+                    newX = 20;
+                }
+                
+                if (touchY < window.innerHeight / 2) {
+                    newY = maxHeight - 20;
+                } else {
+                    newY = 20;
+                }
+                
+                btnNo.style.position = 'fixed';
+                btnNo.style.left = newX + 'px';
+                btnNo.style.top = newY + 'px';
+
+                // Añadir vibración si está disponible
+                if (navigator.vibrate) {
+                    navigator.vibrate(50);
+                }
+            } else {
+                // Comportamiento original para PC
+                const newPos = {
+                    x: Math.min(Math.max(20, Math.random() * maxWidth), maxWidth),
+                    y: Math.min(Math.max(20, Math.random() * maxHeight), maxHeight)
+                };
+                
+                btnNo.style.position = 'fixed';
+                btnNo.style.left = newPos.x + 'px';
+                btnNo.style.top = newPos.y + 'px';
+            }
+        }
+
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        
+        if (!isMobile) {
+            btnNo.addEventListener('mouseover', moverBotonNo);
+        } else {
+            btnNo.addEventListener('touchstart', moverBotonNo, { passive: true });
+            btnNo.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                moverBotonNo(e);
+            });
+        }
+
+        btnNo.addEventListener('click', (e) => {
+            e.preventDefault();
+            moverBotonNo(e);
+        });
+
+        btnSi.addEventListener('click', () => {
+            pregunta.style.display = 'none';
+            mensaje.style.display = 'block';
+        });
+
+        document.getElementById('descargar').addEventListener('click', function(e) {
+            this.classList.add('loading');
+            setTimeout(() => this.classList.remove('loading'), 1000);
+        });
+
+        window.addEventListener('resize', () => {
+            const currentLeft = parseInt(btnNo.style.left) || 0;
+            const currentTop = parseInt(btnNo.style.top) || 0;
+            
+            if(currentLeft > window.innerWidth - btnNo.offsetWidth || 
+               currentTop > window.innerHeight - btnNo.offsetHeight) {
+                moverBotonNo();
+            }
+        });
+    </script>
+</body>
+</html>
