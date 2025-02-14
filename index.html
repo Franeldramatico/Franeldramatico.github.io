@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cita Navideña con Goro Akechi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="heart-background"></div>
+
+    <div id="main-page">
+        <h1>¡Bienvenido a tu cita navideña con Goro Akechi!</h1>
+        <button id="start-button">Empezar</button>
+    </div>
+
+    <div id="gender-page" class="hidden">
+        <h2>Selecciona tu género</h2>
+        <div class="gender-options">
+            <div class="gender-option">
+                <input type="radio" id="hombre" name="gender" value="hombre">
+                <label for="hombre">Hombre</label>
+            </div>
+            <div class="gender-option">
+                <input type="radio" id="mujer" name="gender" value="mujer">
+                <label for="mujer">Mujer</label>
+            </div>
+        </div>
+        <button id="gender-next-button" class="hidden">Siguiente</button>
+    </div>
+
+    <div id="name-page" class="hidden">
+        <h2>Ingresa tu nombre</h2>
+        <input type="text" id="name-input" placeholder="Escribe tu nombre" required>
+        <button id="name-next-button" class="hidden">Siguiente</button>
+    </div>
+
+    <div id="confirm-page" class="hidden">
+        <h2>Confirmación</h2>
+        <p id="confirm-text"></p>
+        <button id="confirm-button">Confirmar</button>
+        <button id="restart-button">Reiniciar</button>
+    </div>
+
+    <div id="story-page" class="hidden">
+        <div class="story-content">
+            <p id="story-paragraph1" class="story-paragraph"></p>
+            <p id="story-paragraph2" class="story-paragraph hidden"></p>
+            <button id="continue-story-button" class="hidden">Continuar</button>
+        </div>
+    </div>
+
+    <div id="akechi-interaction-page" class="hidden">
+        <div class="akechi-container">
+            <img id="akechi-image" src="akechi-con-sonrisa-maliciosa.webp" alt="Goro Akechi">
+            <div id="akechi-dialog" class="dialog-box"></div>
+        </div>
+        <div id="player-choices" class="choices-container"></div>
+    </div>
+    <div class="heart-background">
+        <div class="heart" style="left: 10%; top: 20%;"></div>
+        <div class="heart" style="left: 30%; top: 40%;"></div>
+        <div class="heart" style="left: 50%; top: 10%;"></div>
+        <div class="heart" style="left: 70%; top: 30%;"></div>
+        <div class="heart" style="left: 90%; top: 50%;"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

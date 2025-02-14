@@ -1,0 +1,307 @@
+/* Estilos base */
+body {
+    font-family: Georgia, serif;
+    background-color: #ffeff5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Estilos generales de páginas */
+#main-page, #gender-page, #name-page, #confirm-page, #story-page {
+    text-align: center;
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    z-index: 10;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Estilos de botones */
+button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #ff4757;
+    transform: scale(1.05);
+}
+
+button.hidden {
+    display: none;
+}
+
+/* Estilos de selección de género */
+.gender-options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.gender-option {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gender-option input {
+    display: none;
+}
+
+.gender-option label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #ff6b6b;
+    border-radius: 15px;
+    padding: 20px;
+    width: 150px;
+    transition: all 0.3s ease;
+}
+
+.gender-option input:checked + label {
+    background-color: #ff6b6b;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(255,107,107,0.3);
+}
+
+/* Estilos de página de nombre */
+#name-page {
+    text-align: center;
+}
+
+#name-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    margin: 20px 0;
+    border: 2px solid #ff6b6b;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+#name-input:focus {
+    outline: none;
+    border-color: #ff4757;
+    box-shadow: 0 0 10px rgba(255,71,87,0.2);
+}
+
+/* Estilos de página de historia */
+#story-page {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.story-content {
+    background-color: white;
+    padding: 60px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    max-width: 100%;
+    text-align: justify;
+    font-size: 1.1em;
+    line-height: 1.7;
+}
+
+.story-paragraph {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#continue-story-button {
+    display: block;
+    margin: 20px auto;
+}
+
+/* Estilos de corazones */
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+    100% { transform: translateY(0) rotate(-10deg); }
+}
+
+.heart-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff6b6b"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3[...]');
+    background-size: contain;
+    opacity: 0.6;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Estilos para la página de interacción con Akechi */
+#akechi-interaction-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    text-align: center;
+}
+
+.akechi-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 30px;
+    max-width: 600px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#akechi-image {
+    max-width: 300px;
+    max-height: 400px;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.dialog-box {
+    background-color: #f9f9f9;
+    border: 2px solid #ff6b6b;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.choices-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.choice-button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.choice-button:hover {
+    background-color: #ff5252;
+}
+
+.choice-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .akechi-container {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    #akechi-image {
+        max-width: 250px;
+    }
+
+    .dialog-box {
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    .choice-button {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
+
+#akechi-image {
+    max-width: 250px;
+    max-height: 350px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+/* Estilos de corazones */
+.heart-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff6b6b"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+    background-size: contain;
+    opacity: 0.6;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+    100% { transform: translateY(0) rotate(-10deg); }
+}
