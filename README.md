@@ -7,9 +7,7 @@
 
 ✨ *¡Gracias por visitar mi perfil!* ✨
 
-       .-.
-      (o o)
-      | O |
-      |   |
-      '~~~'
+ /\_/\  
+( o.o ) 
+ > ^ <  
       
